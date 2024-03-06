@@ -1,0 +1,15 @@
+{
+  "name":"Itachi Youtube Video downloader",
+  "description":"Itachi Youtube Video Downloader",
+  "version":"1.0",
+  "manifest_version":3,
+  "action":{
+    "default_title":"Itachi Youtube Video downloader",
+    "default_popup":"index.html",
+    "default_icon":{
+      "16":"icon.png",
+      "128":"icon.png"
+    }
+  }
+
+}
