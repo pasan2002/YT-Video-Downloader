@@ -63,71 +63,73 @@ export default function Download() {
     }
 
     return (
-        <div className="w-[600px] h-[500px] bg-bg-color flex justify-start items-center flex-col p-4 border-orange-500 border-[5px] relative rounded-md">
-            <h2 className="text-txt-color text-3xl pb-6 pt-4 font-extrabold">
-                Itachi Youtube Video Downloader
-            </h2>
-            <div className="mt-8 flex justify-between items-center">
-                <form
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        getVideoInfo(link);
-                    }}
-                >
-                    <input
-                        onChange={(e) => setLink(e.target.value)}
-                        type="text"
-                        placeholder="Enter the URL"
-                        className="px-4 py-2 rounded-md border-[3px] border-none focus:outline-blue-500 focus:ring-1 focus:ring-blue-500 focus:ring-opacity-50 w-full"
-                        required
-                    />
-                </form>
-                <button
-                    onClick={() => getVideoInfo(link)}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-md font-bold hover:bg-slate-600 focus:outline-none"
-                >
-                    Add Url
-                </button>
-            </div>
-            <div>
-                {loader ? (
-                    <div className="w-full py-5 text-center">
-                        <BounceLoader color="#fff" />
-                    </div>
-                ) : vidInfo && (
-                    <div className="flex px-4 gap-3">
-                        <img
-                            src={vidInfo.thumbnailUrl}
-                            alt={vidInfo.title}
-                            className="max-w-[200px] rounded-md h-[150px] mt-2"
+        <div className="flex justify-center items-center h-screen">
+            <div className="w-[600px] h-[500px] bg-bg-color flex justify-start items-center flex-col p-4 border-orange-500 border-[5px] relative rounded-md">
+                <h2 className="text-txt-color text-3xl pb-6 pt-4 font-extrabold">
+                    Itachi Youtube Video Downloader
+                </h2>
+                <div className="mt-8 flex justify-between items-center">
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            getVideoInfo(link);
+                        }}
+                    >
+                        <input
+                            onChange={(e) => setLink(e.target.value)}
+                            type="text"
+                            placeholder="Enter the URL"
+                            className="px-4 py-2 rounded-md border-[3px] border-none focus:outline-blue-500 focus:ring-1 focus:ring-blue-500 focus:ring-opacity-50 w-full"
+                            required
                         />
-                        <div className="text-white flex gap-2 flex-col">
-                            <h3 className="mt-2">{vidInfo.title.slice(0, 70)}</h3>
-                            <span>Time: {vidInfo.duration} seconds</span>
-                            <div className="flex gap-3 mt-3">
-                                <select
-                                    onChange={(e) => setResolution(e.target.value)}
-                                    name="Resolution Selector"
-                                    id=""
-                                    className="px-3 py-2 outline-none border border-slate-700 text-slate-700 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                                >
-                                    {vidInfo.videoQuality.length > 0 &&
-                                        vidInfo.videoQuality.map((v, i) => (
-                                            <option key={i} value={v}>
-                                                {v}
-                                            </option>
-                                        ))}
-                                </select>
-                                <button 
-                                onClick={download}
-                                className="px-3 py-2 bg-blue-500 text-white rounded-md font-bold hover:bg-slate-600 focus:outline-none">
-                                    Download
-                                </button>
+                    </form>
+                    <button
+                        onClick={() => getVideoInfo(link)}
+                        className="px-4 py-2 bg-blue-500 text-white rounded-md font-bold hover:bg-slate-600 focus:outline-none"
+                    >
+                        Add Url
+                    </button>
+                </div>
+                <div>
+                    {loader ? (
+                        <div className="w-full py-5 text-center">
+                            <BounceLoader color="#fff" />
+                        </div>
+                    ) : vidInfo && (
+                        <div className="flex px-4 gap-3">
+                            <img
+                                src={vidInfo.thumbnailUrl}
+                                alt={vidInfo.title}
+                                className="max-w-[200px] rounded-md h-[150px] mt-2"
+                            />
+                            <div className="text-white flex gap-2 flex-col">
+                                <h3 className="mt-2">{vidInfo.title.slice(0, 70)}</h3>
+                                <span>Time: {vidInfo.duration} seconds</span>
+                                <div className="flex gap-3 mt-3">
+                                    <select
+                                        onChange={(e) => setResolution(e.target.value)}
+                                        name="Resolution Selector"
+                                        id=""
+                                        className="px-3 py-2 outline-none border border-slate-700 text-slate-700 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                                    >
+                                        {vidInfo.videoQuality.length > 0 &&
+                                            vidInfo.videoQuality.map((v, i) => (
+                                                <option key={i} value={v}>
+                                                    {v}
+                                                </option>
+                                            ))}
+                                    </select>
+                                    <button 
+                                    onClick={download}
+                                    className="px-3 py-2 bg-blue-500 text-white rounded-md font-bold hover:bg-slate-600 focus:outline-none">
+                                        Download
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
-        </div>
+        </div>    
     );
 }
