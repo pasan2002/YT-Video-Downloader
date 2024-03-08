@@ -3,7 +3,7 @@
 # Download extension files from here.
 https://drive.google.com/drive/folders/1_8I-1fsNbUGQEAYWTj2ON_xW3FaFSMTQ?usp=sharing
 
-# How to setup the extension :-
+# How to setup the extension localy :-
 
 1. First Download file from the above link.
 
