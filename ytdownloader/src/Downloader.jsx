@@ -23,7 +23,7 @@ export default function Download() {
             const videoID = videoIDMatch[1]
 
             const response = await fetch(
-                `https://youtube-video-downloader-extension.onrender.com/api/v1/get-vid-info/${videoID}`
+                `https://itachiyoutubedownloader.cyclic.app/api/v1/get-vid-info/${videoID}`
             );
 
             if (!response.ok) {
