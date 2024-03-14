@@ -1,7 +1,7 @@
 ﻿# Youtube-Video-Downloader-Extension
 
 # Download extension files from here.
-https://drive.google.com/drive/folders/1_8I-1fsNbUGQEAYWTj2ON_xW3FaFSMTQ?usp=sharing
+https://drive.google.com/drive/folders/1_8I-1fsNbUGQEAYWTj2ON_xW3FaFSMTQ?usp=drive_link
 
 # How to setup the extension localy :-
 
