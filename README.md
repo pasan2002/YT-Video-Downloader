@@ -21,7 +21,8 @@ https://drive.google.com/drive/folders/1_8I-1fsNbUGQEAYWTj2ON_xW3FaFSMTQ?usp=dri
 
 # screenshot
 
-![Screenshot 2024-03-07 095233](https://github.com/pasan2002/Youtube-Video-Downloader-Extension/assets/115849043/918ac5e6-2f92-4825-801a-fc126dfb45a6)
+![Screenshot 2024-03-22 215136](https://github.com/pasan2002/Youtube-Video-Downloader-Extension/assets/115849043/eb0e39e7-520b-4d36-a37c-67014f802af7)
+
 
 # If you want to use this without downloading the extension files just click the link on the description.
 
