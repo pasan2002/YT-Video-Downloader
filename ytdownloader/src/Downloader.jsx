@@ -1,6 +1,10 @@
 import React from "react"
 import BounceLoader from "react-spinners/BounceLoader"
 
+//icons
+import {AiFillGithub} from "react-icons/ai"
+
+
 export default function Download() {
     // useState
     const [link, setLink] = React.useState("")
@@ -63,13 +67,39 @@ export default function Download() {
     }
 
     return (
-        <div className="flex justify-center items-center h-screen">
-            <div className="w-[600px] h-[500px] bg-bg-color flex justify-start items-center flex-col p-4 border-orange-500 border-[5px] relative rounded-md">
-                <h2 className="text-txt-color text-3xl pb-6 pt-4 font-extrabold">
-                    Itachi Youtube Video Downloader
+        
+        <div id="container" className="flex justify-center items-center h-screen" class="container" >
+            {/* Header Title */}
+            <div className=" text-white text-3xl pb-6 pt-4 font-extrabold  w-full text-center ">
+                <h2  className=" text-center mt-10">
+                     ITACHI YOUTUBE DOWNLOADER
                 </h2>
-                <div className="mt-8 flex justify-between items-center">
-                    <form
+
+            </div>
+            <div className="bg-white h-1">
+
+            </div>
+
+
+
+
+            <div className=" w-[768px] h-full   flex justify-start items-center flex-col p-4   relative rounded-md  "   >
+                            
+
+
+
+
+
+
+
+
+
+            
+                {/* <h2 className=" text-white text-3xl pb-6 pt-4 font-extrabold bg-white w-full">
+                     ITACHI YOUTUBE DOWNLOADER
+                </h2> */}
+                <div className="mt-8  flex justify-between  p-1 items-center ">
+                    <form className="m-3"
                         onSubmit={(e) => {
                             e.preventDefault();
                             getVideoInfo(link);
@@ -83,11 +113,14 @@ export default function Download() {
                             required
                         />
                     </form>
+
+
+                    {/* URL Button */}
                     <button
                         onClick={() => getVideoInfo(link)}
-                        className="px-4 py-2 bg-blue-500 text-white rounded-md font-bold hover:bg-slate-600 focus:outline-none"
+                        className="px-4 py-2 hover:bg-[#839ae5] bg-[#4050e2] text-white rounded-md font-bold  focus:outline-none"
                     >
-                        Add Url
+                        Get URL
                     </button>
                 </div>
                 <div>
@@ -121,7 +154,7 @@ export default function Download() {
                                     </select>
                                     <button 
                                     onClick={download}
-                                    className="px-3 py-2 bg-blue-500 text-white rounded-md font-bold hover:bg-slate-600 focus:outline-none">
+                                    className="px-3 py-2  text-white rounded-md font-bold hover:bg-[#839ae5] bg-[#4050e2] focus:outline-none">
                                         Download
                                     </button>
                                 </div>
@@ -129,6 +162,30 @@ export default function Download() {
                         </div>
                     )}
                 </div>
+            </div>
+
+
+
+
+            {/* Creadit */}
+            <div className=" h-20">
+
+            </div>
+            
+            <div>
+            <footer class="flex flex-col items-center py-4 bg-white   ">
+                <p>✔ Last update: March 2024 Update</p>
+                <a href="https://github.com/pasan2002/Youtube-Video-Downloader-Extension" 
+                    target="_blank" 
+                    
+                    title="View on Github" 
+                    class="flex items-center mt-2 h-7 sm:h-9 px-2.5 text-xs sm:text-base text-white hover:bg-[#839ae5] bg-[#4050e2]  rounded">
+                        <AiFillGithub/>
+                        <svg class="w-5 sm:w-5 mt-0.5"  viewBox="0 0 24 24" fill="currentColor">
+                        </svg>
+                        <span class="ml-2 text-balance">View on Github</span>
+                </a>
+            </footer>
             </div>
         </div>    
     );
