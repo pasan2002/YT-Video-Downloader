@@ -1,21 +1,31 @@
 {
   "version": 2,
-  "routes": [
-    { "src": "/api/v1/(.*)", "dest": "server.js" },
-    { "src": "/", "dest": "server.js" }
-  ],
-  "functions": {
-    "api/v1/get-vid-info/:vidId": {
-      "maxDuration": 10,
-      "memory": 128
-    },
-    "api/v1/get-video-duration/:vidId": {
-      "maxDuration": 10,
-      "memory": 128
-    },
-    "video-download": {
-      "maxDuration": 30,
-      "memory": 512
+  "builds": [
+    {
+      "src": "index.js", // Your server entry file
+      "use": "@vercel/node"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/v1/get-vid-info/(.*)",
+      "dest": "/index.js" // Redirect API routes to the server entry file
+    },
+    {
+      "src": "/api/v1/get-video-duration/(.*)",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/video-download",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.js" // Redirect all other routes
+    }
+  ],
+  "env": {
+    // Environment variables can be defined here
+  },
+  "regions": ["all"] // Define the regions where your serverless functions should be deployed
 }
