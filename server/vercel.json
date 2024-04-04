@@ -1,5 +1,21 @@
 {
-  "version":2,
-  "builds":[{"src": "/server.js", "use": "@vercel/node"}],
-  "routes": [{"src": "/(.*)", "dest": "/"}]
+  "version": 2,
+  "routes": [
+    { "src": "/api/v1/(.*)", "dest": "server.js" },
+    { "src": "/", "dest": "server.js" }
+  ],
+  "functions": {
+    "api/v1/get-vid-info/:vidId": {
+      "maxDuration": 10,
+      "memory": 128
+    },
+    "api/v1/get-video-duration/:vidId": {
+      "maxDuration": 10,
+      "memory": 128
+    },
+    "video-download": {
+      "maxDuration": 30,
+      "memory": 512
+    }
+  }
 }
