@@ -1,27 +1,4 @@
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/v1/get-vid-info/(.*)",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/api/v1/get-vid-info/(.*)", // Corrected typo
-      "dest": "/server.js"
-    },
-    {
-      "src": "/video-download",
-      "dest": "/server.js"
-    }
-  ],
-  "env": {
-    // Environment variables can be defined here
-  },
-  "regions": ["all"]
+{ 
+  "version": 2, 
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }] 
 }
