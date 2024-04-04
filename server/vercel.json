@@ -2,30 +2,26 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.js", // Your server entry file
+      "src": "server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/v1/get-vid-info/(.*)",
-      "dest": "/server.js" // Redirect API routes to the server entry file
+      "dest": "/server.js"
     },
     {
-      "src": "/api/v1/get-video-duration/(.*)",
+      "src": "/api/v1/get-vid-info/(.*)", // Corrected typo
       "dest": "/server.js"
     },
     {
       "src": "/video-download",
       "dest": "/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/server.js" // Redirect all other routes
     }
   ],
   "env": {
     // Environment variables can be defined here
   },
-  "regions": ["all"] // Define the regions where your serverless functions should be deployed
+  "regions": ["all"]
 }
