@@ -27,7 +27,7 @@ export default function Download() {
             const videoID = videoIDMatch[1]
 
             const response = await fetch(
-                `https://tame-jade-pronghorn-tutu.cyclic.app/api/v1/get-vid-info/${videoID}`
+                `https://pink-agile-jay.cyclic.app/api/v1/get-vid-info/${videoID}`
             );
 
             if (!response.ok) {
@@ -36,7 +36,7 @@ export default function Download() {
 
             const data = await response.json()
             const durationResponse = await fetch(
-                `https://tame-jade-pronghorn-tutu.cyclic.app/api/v1/get-video-duration/${videoID}`
+                `https://pink-agile-jay.cyclic.app/api/v1/get-video-duration/${videoID}`
             )
             if (!durationResponse.ok) {
                 throw new Error(`API request failed with status ${durationResponse.status}`)
@@ -62,7 +62,7 @@ export default function Download() {
             /youtu(?:\.be|be\.com)\/(?:[\w\-]+\?v=)?([^\?&\"\<>]+)/
         )
         const videoID = videoIDMatch[1]
-        const url = `https://tame-jade-pronghorn-tutu.cyclic.app/video-download?id=${videoID}&resolution=${resolution}`
+        const url = `https://pink-agile-jay.cyclic.app/video-download?id=${videoID}&resolution=${resolution}`
         window.location.href = url
     }
 
