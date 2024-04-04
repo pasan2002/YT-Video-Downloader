@@ -2,26 +2,26 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.js", // Your server entry file
+      "src": "server.js", // Your server entry file
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/v1/get-vid-info/(.*)",
-      "dest": "/index.js" // Redirect API routes to the server entry file
+      "dest": "/server.js" // Redirect API routes to the server entry file
     },
     {
       "src": "/api/v1/get-video-duration/(.*)",
-      "dest": "/index.js"
+      "dest": "/server.js"
     },
     {
       "src": "/video-download",
-      "dest": "/index.js"
+      "dest": "/server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.js" // Redirect all other routes
+      "dest": "/server.js" // Redirect all other routes
     }
   ],
   "env": {
