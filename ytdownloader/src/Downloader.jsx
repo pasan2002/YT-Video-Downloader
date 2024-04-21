@@ -27,7 +27,7 @@ export default function Download() {
             const videoID = videoIDMatch[1]
 
             const response = await fetch(
-                `http://itachiytdownloader.us.to/api/v1/get-vid-info/${videoID}`
+                `https://itachiytdownloader.fr.to/api/v1/get-vid-info/${videoID}`
             );
 
             if (!response.ok) {
@@ -36,7 +36,7 @@ export default function Download() {
 
             const data = await response.json()
             const durationResponse = await fetch(
-                `http://itachiytdownloader.us.to/api/v1/get-video-duration/${videoID}`
+                `https://itachiytdownloader.fr.to/api/v1/get-video-duration/${videoID}`
             )
             if (!durationResponse.ok) {
                 throw new Error(`API request failed with status ${durationResponse.status}`)
@@ -62,7 +62,7 @@ export default function Download() {
             /youtu(?:\.be|be\.com)\/(?:[\w\-]+\?v=)?([^\?&\"\<>]+)/
         )
         const videoID = videoIDMatch[1]
-        const url = `http://itachiytdownloader.us.to/video-download?id=${videoID}&resolution=${resolution}`
+        const url = `https://itachiytdownloader.fr.to/video-download?id=${videoID}&resolution=${resolution}`
         window.location.href = url
     }
 
