@@ -6,10 +6,12 @@ const { chain, forEach } = require("lodash");
 const ffmpegPath = require("ffmpeg-static");
 const { spawn } = require("child_process");
 const sanitize = require("sanitize-filename");
+const instagramGetUrl = require("instagram-url-direct")
 
 app.use(express.json());
 app.use(cors());
 
+//*Youtube Video Downloading*//
 const getResolutions = (formats) => {
   let resolutionArray = [];
 
@@ -140,6 +142,23 @@ app.get("/video-download", async (req, res) => {
   } catch (error) {
     console.error("Error downloading video:", error);
     res.status(500).json({ error: "Failed to download video" });
+  }
+});
+
+//*Instagram Video Downloader**/
+app.post("/api/v1/instaDownload", async (req, res) => {
+  const { url } = req.body;
+
+  if (!url) {
+    return res.status(400).json({ error: "URL is required" });
+  }
+
+  try {
+    let links = await instagramGetUrl(url);
+    res.status(200).json({ message: "Downloading URL:", links });
+  } catch (error) {
+    console.error("Error creating link:", error);
+    res.status(400).json({ error: "Failed to create download link", details: error.message });
   }
 });
 
