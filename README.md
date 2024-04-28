@@ -1,4 +1,4 @@
-﻿# Youtube-Video-Downloader-Extension
+﻿# Itachi-Video-Downloader-Extension
 
 # Download extension files from here.
 https://drive.google.com/drive/folders/1_8I-1fsNbUGQEAYWTj2ON_xW3FaFSMTQ?usp=drive_link
@@ -25,4 +25,5 @@ https://drive.google.com/drive/folders/1_8I-1fsNbUGQEAYWTj2ON_xW3FaFSMTQ?usp=dri
 
 
 # If you want to use this without downloading the extension files just click the link on the description.
+# Also now you can download Instagram videos from our extension.
 
