@@ -69,6 +69,16 @@ export default function Download() {
     return (
         
         <div id="container" className="flex justify-center items-center h-screen" class="container" >
+            <nav className="flex flex-row justify-between pt-3 px-4 text-white">
+                <ul className="flex flex-row space-x-10">
+                    <li>
+                        <a href="/" className="font-bold">YouTube</a>
+                    </li>
+                    <li>
+                        <a href="/insta" className="font-bold">Instagram</a>
+                    </li>
+                </ul>
+            </nav>
             {/* Header Title */}
             <div className=" text-white text-3xl pb-6 pt-4 font-extrabold  w-full text-center ">
                 <h2  className=" text-center mt-10">
