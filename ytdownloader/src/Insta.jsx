@@ -36,6 +36,16 @@ export default function Insta() {
 
     return (
         <div id="container" className="container">
+            <nav className="flex flex-row justify-between pt-3 px-4 text-white">
+                <ul className="flex flex-row space-x-10">
+                    <li>
+                        <a href="/" className="font-bold">YouTube</a>
+                    </li>
+                    <li>
+                        <a href="/insta" className="font-bold">Instagram</a>
+                    </li>
+                </ul>
+            </nav>
             <h2 className="text-white text-3xl pb-6 pt-4 font-extrabold w-full text-center mt-10">
                 ITACHI INSTAGRAM DOWNLOADER
             </h2>
