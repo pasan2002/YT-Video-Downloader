@@ -16,7 +16,7 @@ export default function Insta() {
         setError("");
     
         try {
-            const response = await axios.post("https://itachiytdownloader.fr.to/api/v1/instaDownload", { url: link });
+            const response = await axios.post("https://localhost:5000/api/v1/instaDownload", { url: link });
             const downloadUrl = response.data.links.url_list[0]; 
             
             setLoading(false);
