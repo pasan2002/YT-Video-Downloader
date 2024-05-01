@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import BounceLoader from "react-spinners/BounceLoader";
+import { Link } from "react-router-dom";
+
 
 // Icons
 import { AiFillGithub } from "react-icons/ai";
@@ -35,49 +37,51 @@ export default function Insta() {
     }
 
     return (
-        <div id="container" className="container">
-            <nav className="flex flex-row justify-between pt-3 px-4 text-white">
-                <ul className="flex flex-row space-x-10">
-                    <li>
-                        <a href="/" className="font-bold">YouTube</a>
-                    </li>
-                    <li>
-                        <a href="/insta" className="font-bold">Instagram</a>
-                    </li>
-                </ul>
-            </nav>
-            <h2 className="text-white text-3xl pb-6 pt-4 font-extrabold w-full text-center mt-10">
-                ITACHI INSTAGRAM DOWNLOADER
-            </h2>
-            <div className="bg-white h-1"></div>
+        <div className="flex justify-center items-center w-full">
+            <div className="max-w-xl w-full flex flex-col items-center px-4 py-4 rounded-md">
+                <nav className="w-full flex justify-between py-2 text-white">
+                    <ul className="flex flex-row space-x-4 sm:space-x-10">
+                        <li>
+                            <Link to="/" className="font-bold">YouTube</Link>
+                        </li>
+                        <li>
+                            <Link to="/insta" className="font-bold">Instagram</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <h2 className="sm:text-3xl mt-2 mb-4 text-center font-bold text-white">
+                    ITACHI INSTAGRAM DOWNLOADER
+                </h2>
+                <div className="bg-white h-1 mb-4 w-full"></div>
 
-            <div className="w-[768px] h-full flex justify-center items-center flex-col p-4 relative rounded-md">
-                <form className="mt-8 flex justify-between p-1 items-center" onSubmit={handleDownload}>
-                    <input
-                        onChange={(e) => setLink(e.target.value)}
-                        type="text"
-                        placeholder="Enter the URL"
-                        className="px-4 py-2 rounded-md border-3 border-none focus:outline-blue-500 focus:ring-1 focus:ring-blue-500 w-full"
-                        required
-                    />
-                    <button
-                        type="submit"
-                        className="px-4 py-2 hover:bg-[#839ae5] bg-[#4050e2] text-white rounded-md font-bold focus:outline-none m-3"
-                        disabled={loading}
-                    >
-                        {loading ? <BounceLoader color="#FFFFFF" size={30} /> : "Download Video"}
-                    </button>
-                </form>
-                {error && <div className="text-red-500 mt-2">{error}</div>}
+                <div className="w-full">
+                    <form className="flex space-x-3" onSubmit={handleDownload}>
+                        <input
+                            onChange={(e) => setLink(e.target.value)}
+                            type="text"
+                            placeholder="Enter the URL"
+                            className="flex-grow px-2 py-1 border rounded-md focus:outline-none"
+                            required
+                        />
+                        <button
+                            type="submit"
+                            className="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none"
+                            disabled={loading}
+                        >
+                            {loading ? <BounceLoader color="#FFFFFF" size={30} /> : "Download"}
+                        </button>
+                    </form>
+                    {error && <div className="text-red-500 mt-2">{error}</div>}
+                </div>
+
+                <footer className="w-full mt-4 py-2 text-center text-xs">
+                    <p>✔ Last update: April 2024 Update</p>
+                    <a href="https://github.com/pasan2002/Youtube-Video-Downloader-Extension" target="_blank" rel="noopener noreferrer" title="View on Github" className="flex items-center justify-center gap-2 mt-1 py-1 px-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                        <AiFillGithub />
+                        <span>View on Github</span>
+                    </a>
+                </footer>
             </div>
-
-            <footer className="flex flex-col items-center py-4 bg-white">
-                <p>✔ Last update: April 2024 Update</p>
-                <a href="https://github.com/pasan2002/Youtube-Video-Downloader-Extension" target="_blank" rel="noopener noreferrer" title="View on Github" className="flex items-center mt-2 h-7 sm:h-9 px-2.5 text-xs sm:text-base text-white hover:bg-[#839ae5] bg-[#4050e2] rounded">
-                    <AiFillGithub />
-                    <span className="ml-2">View on Github</span>
-                </a>
-            </footer>
         </div>
     );
 }
