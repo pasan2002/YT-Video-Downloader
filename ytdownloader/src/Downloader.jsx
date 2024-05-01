@@ -1,5 +1,6 @@
 import React from "react"
 import BounceLoader from "react-spinners/BounceLoader"
+import { Link } from "react-router-dom";
 
 //icons
 import {AiFillGithub} from "react-icons/ai"
@@ -67,136 +68,84 @@ export default function Download() {
     }
 
     return (
-        
-        <div id="container" className="flex justify-center items-center h-screen" class="container" >
-            <nav className="flex flex-row justify-between pt-3 px-4 text-white">
-                <ul className="flex flex-row space-x-10">
-                    <li>
-                        <a href="/" className="font-bold">YouTube</a>
-                    </li>
-                    <li>
-                        <a href="/insta" className="font-bold">Instagram</a>
-                    </li>
-                </ul>
-            </nav>
-            {/* Header Title */}
-            <div className=" text-white text-3xl pb-6 pt-4 font-extrabold  w-full text-center ">
-                <h2  className=" text-center mt-10">
-                     ITACHI YOUTUBE DOWNLOADER
+        <div className="flex justify-center items-center w-full">
+            <div className="max-w-xl w-full flex flex-col items-center px-4 py-4 rounded-md">
+                <nav className="w-full flex justify-between py-2 text-white">
+                    <ul className="flex space-x-4 sm:space-x-10">
+                        <li><Link to="/" className="font-bold">YouTube</Link></li>
+                        <li><Link to="/insta" className="font-bold">Instagram</Link></li>
+                    </ul>
+                </nav>
+
+                <h2 className="sm:text-3xl mt-2 mb-4 text-center font-bold text-white">
+                    ITACHI YOUTUBE DOWNLOADER
                 </h2>
 
-            </div>
-            <div className="bg-white h-1">
+                <div className="w-full bg-white h-1 mb-4"></div>
 
-            </div>
-
-
-
-
-            <div className=" w-[768px] h-full   flex justify-start items-center flex-col p-4   relative rounded-md  "   >
-                            
-
-
-
-
-
-
-
-
-
-            
-                {/* <h2 className=" text-white text-3xl pb-6 pt-4 font-extrabold bg-white w-full">
-                     ITACHI YOUTUBE DOWNLOADER
-                </h2> */}
-                <div className="mt-8  flex justify-between  p-1 items-center ">
-                    <form className="m-3"
+                <div className="w-full">
+                    <form className="flex space-x-3"
                         onSubmit={(e) => {
                             e.preventDefault();
                             getVideoInfo(link);
-                        }}
-                    >
+                        }}>
                         <input
                             onChange={(e) => setLink(e.target.value)}
                             type="text"
                             placeholder="Enter the URL"
-                            className="px-4 py-2 rounded-md border-[3px] border-none focus:outline-blue-500 focus:ring-1 focus:ring-blue-500 focus:ring-opacity-50 w-full"
+                            className="flex-grow px-2 py-1 border rounded-md focus:outline-none"
                             required
                         />
+                        <button
+                            type="submit"
+                            className="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none"
+                        >
+                            Get URL
+                        </button>
                     </form>
-
-
-                    {/* URL Button */}
-                    <button
-                        onClick={() => getVideoInfo(link)}
-                        className="px-4 py-2 hover:bg-[#839ae5] bg-[#4050e2] text-white rounded-md font-bold  focus:outline-none"
-                    >
-                        Get URL
-                    </button>
                 </div>
-                <div>
-                    {loader ? (
-                        <div className="w-full py-5 text-center">
-                            <BounceLoader color="#fff" />
-                        </div>
-                    ) : vidInfo && (
-                        <div className="flex px-4 gap-3">
-                            <img
-                                src={vidInfo.thumbnailUrl}
-                                alt={vidInfo.title}
-                                className="max-w-[200px] rounded-md h-[150px] mt-2"
-                            />
-                            <div className="text-white flex gap-2 flex-col">
-                                <h3 className="mt-2">{vidInfo.title.slice(0, 70)}</h3>
-                                <span>Time: {vidInfo.duration} seconds</span>
-                                <div className="flex gap-3 mt-3">
-                                    <select
-                                        onChange={(e) => setResolution(e.target.value)}
-                                        name="Resolution Selector"
-                                        id=""
-                                        className="px-3 py-2 outline-none border border-slate-700 text-slate-700 rounded-md focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                                    >
-                                        {vidInfo.videoQuality.length > 0 &&
-                                            vidInfo.videoQuality.map((v, i) => (
-                                                <option key={i} value={v}>
-                                                    {v}
-                                                </option>
-                                            ))}
-                                    </select>
-                                    <button 
+
+                {loader ? (
+                    <div className="w-full py-3 text-center">
+                        <BounceLoader color="#4A90E2" />
+                    </div>
+                ) : vidInfo && (
+                    <div className="flex flex-col sm:flex-row p-3 gap-3 w-full items-center">
+                        <img
+                            src={vidInfo.thumbnailUrl}
+                            alt={vidInfo.title}
+                            className="w-32 h-24 rounded-md"
+                        />
+                        <div className="flex flex-col gap-2 w-full">
+                            <h3>{vidInfo.title.slice(0, 70)}</h3>
+                            <span>Time: {vidInfo.duration} seconds</span>
+                            <div className="flex gap-3 mt-2">
+                                <select
+                                    onChange={(e) => setResolution(e.target.value)}
+                                    className="px-2 py-1 rounded-md border border-gray-300 focus:border-blue-500"
+                                >
+                                    {vidInfo.videoQuality.map((v, i) => (
+                                        <option key={i} value={v}>{v}</option>
+                                    ))}
+                                </select>
+                                <button
                                     onClick={download}
-                                    className="px-3 py-2  text-white rounded-md font-bold hover:bg-[#839ae5] bg-[#4050e2] focus:outline-none">
-                                        Download
-                                    </button>
-                                </div>
+                                    className="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none">
+                                    Download
+                                </button>
                             </div>
                         </div>
-                    )}
-                </div>
+                    </div>
+                )}
+
+                <footer className="w-full mt-4 py-2 text-center text-xs">
+                    <p>✔ Last update: April 2024 Update</p>
+                    <a href="https://github.com/pasan2002/Youtube-Video-Downloader-Extension" target="_blank" className="flex items-center justify-center gap-2 mt-1 py-1 px-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                        <AiFillGithub />
+                        <span>View on Github</span>
+                    </a>
+                </footer>
             </div>
-
-
-
-
-            {/* Creadit */}
-            <div className=" h-20">
-
-            </div>
-            
-            <div>
-            <footer class="flex flex-col items-center py-4 bg-white   ">
-                <p>✔ Last update: March 2024 Update</p>
-                <a href="https://github.com/pasan2002/Youtube-Video-Downloader-Extension" 
-                    target="_blank" 
-                    
-                    title="View on Github" 
-                    class="flex items-center mt-2 h-7 sm:h-9 px-2.5 text-xs sm:text-base text-white hover:bg-[#839ae5] bg-[#4050e2]  rounded">
-                        <AiFillGithub/>
-                        <svg class="w-5 sm:w-5 mt-0.5"  viewBox="0 0 24 24" fill="currentColor">
-                        </svg>
-                        <span class="ml-2 text-balance">View on Github</span>
-                </a>
-            </footer>
-            </div>
-        </div>    
+        </div>
     );
 }
