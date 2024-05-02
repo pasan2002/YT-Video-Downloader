@@ -20,8 +20,9 @@ https://drive.google.com/drive/folders/1_8I-1fsNbUGQEAYWTj2ON_xW3FaFSMTQ?usp=sha
 4. After that click on the load unpacked and select the file that you download before.
 
 # screenshot
+![Screenshot 2024-05-02 144510](https://github.com/pasan2002/YT-Video-Downloader/assets/115849043/963203b7-0b90-489e-82df-6a55fd9689a2)
 
-![Screenshot 2024-03-22 215136](https://github.com/pasan2002/Youtube-Video-Downloader-Extension/assets/115849043/eb0e39e7-520b-4d36-a37c-67014f802af7)
+
 
 
 # If you want to use this without downloading the extension files just click the link on the description.
