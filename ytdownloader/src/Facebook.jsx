@@ -17,17 +17,24 @@ export default function Facebook() {
         setLoader(true);
         setError("");
 
+        console.log("Sending URL to API:", link);
+
         try {
-            const response = await axios.post("https://youtube-video-downloader-extension.onrender.com/api/v1/fbDownload", {url: link});
-            const { thumbnail, duration_ms, title, sd, hd } = response.data.links;
+            const response = await axios.post("https://itachiytdownloader.fr.to/api/v1/fbDownload", { url: link });
+            const data = response.data.links.data;
             setVidInfo({
-                thumbnail,
-                duration: duration_ms / 1000,
-                title,
+                thumbnail: data[0].thumbnail, 
+                title: "Video from Facebook", 
+                duration: "Unknown" 
             });
-            setResolutionLinks({ sd, hd });
+            const sd = data.find(item => item.resolution === "360p (SD)");
+            const hd = data.find(item => item.resolution === "720p (HD)");
+            setResolutionLinks({ 
+                sd: sd ? sd.url : '', 
+                hd: hd ? hd.url : ''
+            });
         } catch (error) {
-            setError("Error fetching video information: " + error.message);
+            setError(`Error fetching video information: ${error.response ? error.response.data.error : error.message}`);
             console.error("Error fetching video information:", error);
         } finally {
             setLoader(false);
@@ -35,10 +42,9 @@ export default function Facebook() {
     }
 
     function download() {
-        if (selectedResolution === "sd" && resolutionLinks.sd) {
-            window.open(resolutionLinks.sd);
-        } else if (selectedResolution === "hd" && resolutionLinks.hd) {
-            window.open(resolutionLinks.hd);
+        const url = resolutionLinks[selectedResolution];
+        if (url) {
+            window.open(url);
         }
     }
 
@@ -89,12 +95,12 @@ export default function Facebook() {
                     <div className="flex flex-col sm:flex-row p-3 gap-3 w-full items-center">
                         <img
                             src={vidInfo.thumbnail}
-                            alt={vidInfo.title}
+                            alt="Facebook Video"
                             className="w-32 h-24 rounded-md"
                         />
                         <div className="flex flex-col gap-2 w-full">
                             <h3>Title: {vidInfo.title}</h3>
-                            <span>Time: {vidInfo.duration} seconds</span>
+                            <span>Duration: {vidInfo.duration}</span>
                             <div onChange={e => setSelectedResolution(e.target.value)}>
                                 <input type="radio" value="sd" name="resolution" defaultChecked /> SD
                                 <input type="radio" value="hd" name="resolution" /> HD
