@@ -26,5 +26,5 @@ https://drive.google.com/drive/folders/1_8I-1fsNbUGQEAYWTj2ON_xW3FaFSMTQ?usp=sha
 
 
 # If you want to use this without downloading the extension files just click the link on the description.
-# Also now you can download Instagram videos from our extension.
+# Also now you can download Instagram videos and Facebook videos from our extension.
 
