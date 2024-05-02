@@ -74,6 +74,7 @@ export default function Download() {
                     <ul className="flex space-x-4 sm:space-x-10">
                         <li><Link to="/" className="font-bold">YouTube</Link></li>
                         <li><Link to="/insta" className="font-bold">Instagram</Link></li>
+                        <li><Link to="/facebook" className="font-bold">Facebook</Link></li>
                     </ul>
                 </nav>
 
