@@ -15,10 +15,10 @@
     "child_process": "^1.0.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "fb-downloader-scrapper": "^2.0.0",
     "ffmpeg-static": "^5.2.0",
     "instagram-url-direct": "^1.0.15",
     "lodash": "^4.17.21",
+    "nayan-media-downloader": "^2.1.8",
     "sanitize-filename": "^1.6.3",
     "ytdl-core": "^4.11.5"
   }
