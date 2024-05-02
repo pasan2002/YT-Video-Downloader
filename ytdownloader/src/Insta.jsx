@@ -47,6 +47,9 @@ export default function Insta() {
                         <li>
                             <Link to="/insta" className="font-bold">Instagram</Link>
                         </li>
+                        <li>
+                            <Link to="/facebook" className="font-bold">Facebook</Link>
+                        </li>
                     </ul>
                 </nav>
                 <h2 className="sm:text-3xl mt-2 mb-4 text-center font-bold text-white">
