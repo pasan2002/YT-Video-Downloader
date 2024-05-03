@@ -7,7 +7,7 @@ const ffmpegPath = require("ffmpeg-static");
 const { spawn } = require("child_process");
 const sanitize = require("sanitize-filename");
 const instagramGetUrl = require("instagram-url-direct")
-const { ndown } = require("nayan-media-downloader")
+const { ndown, tikdown } = require("nayan-media-downloader")
 
 app.use(express.json());
 app.use(cors());
@@ -178,6 +178,22 @@ app.post("/api/v1/fbDownload", async (req, res) => {
     res.status(400).json({ error: "Failed to create download link", details: error.message });
   }
 });
+
+//*TikTok Video Downloader*//
+app.post("/api/v1/tikDownload", async (req, res) => {
+  const {url} = req.body
+  if(!url) {
+    return res.status(400).json({error: "Enter an URL"})
+  }
+
+  try{
+    let links = await tikdown(url)
+    res.status(200).json({message: "Downloading URL: ", links})
+  }catch(error){
+    console.error("Error creating link:", error);
+    res.status(400).json({ error: "Failed to create download link", details: error.message });
+  }
+})
 
 
 const port = 5000;
