@@ -19,7 +19,7 @@ export default function Tiktok() {
         console.log("Sending URL to API:", link);
 
         try {
-            const response = await axios.post("http://localhost:5000/api/v1/tikDownload", { url: link });
+            const response = await axios.post("https://itachiytdownloader.fr.to/api/v1/tikDownload", { url: link });
             const data = response.data.links.data;
             setVidInfo({
                 title: data.title,
