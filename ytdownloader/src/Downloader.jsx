@@ -75,6 +75,7 @@ export default function Download() {
                         <li><Link to="/" className="font-bold">YouTube</Link></li>
                         <li><Link to="/insta" className="font-bold">Instagram</Link></li>
                         <li><Link to="/facebook" className="font-bold">Facebook</Link></li>
+                        <li><Link to="/tiktok" className="font-bold">TikTok</Link></li> 
                     </ul>
                 </nav>
 
