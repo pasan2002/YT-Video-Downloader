@@ -56,7 +56,7 @@ export default function Insta() {
                     </ul>
                 </nav>
                 <h2 className="sm:text-3xl mt-2 mb-4 text-center font-bold text-white">
-                    ITACHI INSTAGRAM DOWNLOADER
+                    ITACHI INSTA DOWNLOADER
                 </h2>
                 <div className="bg-white h-1 mb-4 w-full"></div>
 
