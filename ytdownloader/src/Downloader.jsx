@@ -18,7 +18,7 @@ export default function Download() {
         try {
             setLoader(true);
             const videoIDMatch = link.match(
-                /youtu(?:\.be|be\.com)\/(?:[\w\-]+\?v=)?([^\?&\"\<>]+)/
+                /youtu(?:\.be|be\.com)\/(?:[\w-]+\?v=)?([^?&"<>]+)/
             )
 
             if (!videoIDMatch) {
@@ -60,7 +60,7 @@ export default function Download() {
     
     function download(){
         const videoIDMatch = link.match(
-            /youtu(?:\.be|be\.com)\/(?:[\w\-]+\?v=)?([^\?&\"\<>]+)/
+            /youtu(?:\.be|be\.com)\/(?:[\w-]+\?v=)?([^?&"<>]+)/
         )
         const videoID = videoIDMatch[1]
         const url = `https://itachiytdownloader.fr.to/video-download?id=${videoID}&resolution=${resolution}`
@@ -142,7 +142,7 @@ export default function Download() {
 
                 <footer className="w-full mt-4 py-2 text-center text-xs">
                     <p>✔ Last update: April 2024 Update</p>
-                    <a href="https://github.com/pasan2002/Youtube-Video-Downloader-Extension" target="_blank" className="flex items-center justify-center gap-2 mt-1 py-1 px-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    <a href="https://github.com/pasan2002/Youtube-Video-Downloader-Extension" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 mt-1 py-1 px-2 bg-blue-500 text-white rounded hover:bg-blue-600">
                         <AiFillGithub />
                         <span>View on Github</span>
                     </a>
