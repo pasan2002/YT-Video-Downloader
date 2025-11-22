@@ -1,18 +1,7 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "ytdownloader/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "ytdownloader/build"
-      }
-    },
-    {
-      "src": "server/server.js",
-      "use": "@vercel/node"
-    }
-  ],
+  "buildCommand": "cd ytdownloader && npm install && npm run build",
+  "outputDirectory": "ytdownloader/build",
   "routes": [
     {
       "src": "/api/v1/(.*)",
@@ -23,8 +12,16 @@
       "dest": "/server/server.js"
     },
     {
+      "handle": "filesystem"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/ytdownloader/$1"
+      "dest": "/index.html"
     }
-  ]
+  ],
+  "functions": {
+    "server/server.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
