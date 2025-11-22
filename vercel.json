@@ -2,26 +2,23 @@
   "version": 2,
   "buildCommand": "cd ytdownloader && npm install && npm run build",
   "outputDirectory": "ytdownloader/build",
-  "routes": [
-    {
-      "src": "/api/v1/(.*)",
-      "dest": "/server/server.js"
-    },
-    {
-      "src": "/video-download",
-      "dest": "/server/server.js"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
   "functions": {
-    "server/server.js": {
-      "runtime": "nodejs18.x"
+    "server/index.js": {
+      "maxDuration": 60
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/api/v1/:path*",
+      "destination": "/server/index.js"
+    },
+    {
+      "source": "/video-download",
+      "destination": "/server/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }

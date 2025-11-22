@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import BounceLoader from "react-spinners/BounceLoader";
 import { Link } from "react-router-dom";
-
+import API_URL from "./config";
 
 // Icons
 import { AiFillGithub } from "react-icons/ai";
@@ -18,7 +18,7 @@ export default function Insta() {
         setError("");
     
         try {
-            const response = await axios.post("https://itachiytdownloader.fr.to/api/v1/instaDownload", { url: link });
+            const response = await axios.post(`${API_URL}/api/v1/instaDownload`, { url: link });
             const downloadUrl = response.data.links.url_list[0]; 
             
             setLoading(false);

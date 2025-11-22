@@ -3,6 +3,7 @@ import axios from "axios";
 import BounceLoader from "react-spinners/BounceLoader";
 import { Link } from "react-router-dom";
 import { AiFillGithub } from "react-icons/ai";
+import API_URL from "./config";
 
 export default function Facebook() {
     const [link, setLink] = useState("");
@@ -20,7 +21,7 @@ export default function Facebook() {
         console.log("Sending URL to API:", link);
 
         try {
-            const response = await axios.post("https://itachiytdownloader.fr.to/api/v1/fbDownload", { url: link });
+            const response = await axios.post(`${API_URL}/api/v1/fbDownload`, { url: link });
             const data = response.data.links.data;
             setVidInfo({
                 thumbnail: data[0].thumbnail, 

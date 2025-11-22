@@ -196,6 +196,12 @@ app.post("/api/v1/tikDownload", async (req, res) => {
 })
 
 
-const port = 5000;
-app.get("/", (req, res) => res.send("Hello world"));
-app.listen(port, () => console.log(`Server is listening on port ${port}`));
+const port = process.env.PORT || 5000;
+app.get("/", (req, res) => res.send("YT Video Downloader API is running"));
+
+// Only listen on port in development (not in Vercel serverless)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => console.log(`Server is listening on port ${port}`));
+}
+
+module.exports = app;

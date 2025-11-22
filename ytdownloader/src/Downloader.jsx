@@ -1,6 +1,7 @@
 import React from "react"
 import BounceLoader from "react-spinners/BounceLoader"
 import { Link } from "react-router-dom";
+import API_URL from "./config";
 
 //icons
 import {AiFillGithub} from "react-icons/ai"
@@ -28,7 +29,7 @@ export default function Download() {
             const videoID = videoIDMatch[1]
 
             const response = await fetch(
-                `https://itachiytdownloader.fr.to/api/v1/get-vid-info/${videoID}`
+                `${API_URL}/api/v1/get-vid-info/${videoID}`
             );
 
             if (!response.ok) {
@@ -37,7 +38,7 @@ export default function Download() {
 
             const data = await response.json()
             const durationResponse = await fetch(
-                `https://itachiytdownloader.fr.to/api/v1/get-video-duration/${videoID}`
+                `${API_URL}/api/v1/get-video-duration/${videoID}`
             )
             if (!durationResponse.ok) {
                 throw new Error(`API request failed with status ${durationResponse.status}`)
@@ -63,7 +64,7 @@ export default function Download() {
             /youtu(?:\.be|be\.com)\/(?:[\w-]+\?v=)?([^?&"<>]+)/
         )
         const videoID = videoIDMatch[1]
-        const url = `https://itachiytdownloader.fr.to/video-download?id=${videoID}&resolution=${resolution}`
+        const url = `${API_URL}/video-download?id=${videoID}&resolution=${resolution}`
         window.location.href = url
     }
 
