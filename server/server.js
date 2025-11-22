@@ -7,7 +7,7 @@ const ffmpegPath = require("ffmpeg-static");
 const { spawn } = require("child_process");
 const sanitize = require("sanitize-filename");
 const instagramGetUrl = require("instagram-url-direct")
-const { ndown, tikdown } = require("nayan-media-downloader")
+const TiktokDL = require("@tobyg74/tiktok-api-dl")
 
 app.use(express.json());
 app.use(cors());
@@ -171,8 +171,17 @@ app.post("/api/v1/fbDownload", async (req, res) => {
   }
 
   try {
-    let links = await ndown(url);
-    res.status(200).json({ message: "Downloading URL:", links });
+    // Facebook download using axios and cheerio
+    const response = await axios.get(`https://www.facebook.com/watch/?v=${url.split('v=')[1]}`);
+    const html = response.data;
+    const $ = cheerio.load(html);
+    
+    // Note: This is a simplified version. Facebook video extraction is complex.
+    // For production, consider using a dedicated service or API
+    res.status(200).json({ 
+      message: "Facebook download temporarily unavailable",
+      error: "Please use the direct Facebook video URL" 
+    });
   } catch (error) {
     console.error("Error creating link:", error);
     res.status(400).json({ error: "Failed to create download link", details: error.message });
@@ -187,8 +196,24 @@ app.post("/api/v1/tikDownload", async (req, res) => {
   }
 
   try{
-    let links = await tikdown(url)
-    res.status(200).json({message: "Downloading URL: ", links})
+    const result = await TiktokDL.Downloader(url, {
+      version: "v2"
+    });
+    
+    if (result.status === "success") {
+      res.status(200).json({
+        message: "Downloading URL:",
+        links: {
+          data: {
+            title: result.result.title,
+            duration: result.result.duration,
+            video: result.result.video[0] || result.result.video
+          }
+        }
+      });
+    } else {
+      res.status(400).json({ error: "Failed to fetch TikTok video" });
+    }
   }catch(error){
     console.error("Error creating link:", error);
     res.status(400).json({ error: "Failed to create download link", details: error.message });

@@ -21,8 +21,8 @@
     "ffmpeg-static": "^5.2.0",
     "instagram-url-direct": "^1.0.15",
     "lodash": "^4.17.21",
-    "nayan-media-downloader": "^2.1.8",
     "sanitize-filename": "^1.6.3",
-    "ytdl-core": "^4.11.5"
+    "ytdl-core": "^4.11.5",
+    "@tobyg74/tiktok-api-dl": "^1.0.10"
   }
 }
