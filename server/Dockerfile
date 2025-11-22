@@ -5,9 +5,13 @@ RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
+# Copy package files
 COPY package*.json ./
-RUN npm install --production
 
+# Install dependencies
+RUN npm install --omit=dev --legacy-peer-deps
+
+# Copy application files
 COPY . .
 
 EXPOSE 5000
