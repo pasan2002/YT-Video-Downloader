@@ -1,8 +1,5 @@
 {
   "dependencies": {
     "react-icons": "^5.0.1"
-  },
-  "scripts": {
-    "build": "cd ytdownloader && npm install && npm run build"
   }
 }
